@@ -25,3 +25,8 @@ suites:
       - role[percona-server]
       - recipe[bp-percona::testdb]
     attributes:
+      bp-percona: 
+       credidentials: 
+         - "bp-percona"
+         - "mysql"
+         - "testserver"

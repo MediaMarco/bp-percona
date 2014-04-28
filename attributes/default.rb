@@ -4,7 +4,7 @@ default['bp-percona']['version'] = '5.6'
 default['bp-percona']['with_xtradb_backup'] = true
 
 # Encrypted data bag containing 'root', 'debian' and 'replication' passwords
-default['bp-percona']['credidentials'] = [ 'bp-percona', 'mysql', 'testing' ]
+default['bp-percona']['credidentials'] = nil
 
 # [mysql]
 
