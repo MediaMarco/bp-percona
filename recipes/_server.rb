@@ -31,6 +31,8 @@ file '/etc/my.cnf' do
   only_if { File.exists?('/etc/my.cnf') }
 end
 
+raise 'node[\'bp-percona\'][\'credidentials\'] is not defined' if node['bp-percona']['credidentials'].nil?
+
 db_cred = Chef::EncryptedDataBagItem.load(node['bp-percona']['credidentials'][0], \
                                           node['bp-percona']['credidentials'][1]) \
                                          [node['bp-percona']['credidentials'][2]]

@@ -1,8 +1,8 @@
 {
   "id": "mysql",
-  "testing": {
-    "encrypted_data": "28Q79fslsO3VJWnNg3lNI7HjuPTYRTo5Wku6EUBtFyKKTRd1LIG0DRmPbo0c\ndaGZDo4nXNsKgoovCUFm8PRLTRIRL0Sz20rpZUdaO8wwff5rCEnRjJbWtIlE\n8DXeCv9g\n",
-    "iv": "r5dTmb51cjmqgX/EqStnkw==\n",
+  "testserver": {
+    "encrypted_data": "+x3FSQFBlsOtV4F/aPULRQA5tArGxLR2Y3I71IQjlJLcpG7Hu76KFq8nycEO\nNFg5gYWqwNyT+hCVMu0XqXX30ik0WGvDnXFO/kmgI3XhIsGs2z7AxLuw9dsh\nXP4nk5rg\n",
+    "iv": "rblnOz9ahTpYuk5D7KVetg==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   }
