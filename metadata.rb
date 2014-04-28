@@ -11,4 +11,4 @@ depends          'mysql-chef_gem', '>= 0.0.2'
 depends          'database', '>= 2.1.8'
 depends          'mysql', '>= 5.2.2'
 
-supports         'debian'
+supports         'debian', '>= 7.0'
