@@ -1,0 +1,9 @@
+{
+  "id": "db",
+  "test_app_db": {
+    "encrypted_data": "OEHtewyn9Y/joLJyEZ+sBq9RLg26YA8IAKwXv9g9umU+z++aQl/FAwnKDr+n\nberZAVkZlAmajAXHMIjBRBhfJ74Mbv8cxuIcCtL13d1O3Gg=\n",
+    "iv": "e1A70ze+eBd7u4XnEWpV/g==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}

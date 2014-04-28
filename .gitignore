@@ -1,0 +1,14 @@
+*~
+*.swp
+Berksfile.lock
+.vagrant
+test/data_bags/xenforo/ssh.json
+\#*
+.\#*
+.kitchen
+.kitchen.local.yml
+.bundle
+Gemfile
+Gemfile.lock
+Rakefile
+vendor

@@ -1,0 +1,20 @@
+{
+    "id": "percona",
+    "name": "percona",
+    "chef_environment": "_default",
+    "json_class": "Chef::Node",
+    "automatic": {
+        "hostname": "percona",
+        "os": "wheezy",
+    },
+    "normal": {
+        "tags": []
+    },
+    "chef_type": "node",
+    "default": {
+    },
+    "override": {
+    },
+    "run_list": [
+    ]
+}

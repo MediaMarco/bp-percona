@@ -1,0 +1,12 @@
+# Automatically generated for Debian scripts by Chef. DO NOT TOUCH!
+[client]
+host     = localhost
+user     = debian-sys-maint
+password = <%= @debianpw %>
+socket   = <%= node['bp-percona']['socket'] %>
+[mysql_upgrade]
+host     = localhost
+user     = debian-sys-maint
+password = <%= @debianpw %>
+socket   = <%= node['bp-percona']['socket'] %>
+basedir  = /usr

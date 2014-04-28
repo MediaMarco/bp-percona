@@ -1,0 +1,15 @@
+{
+    "name": "percona-server",
+    "description": "Bigpoint relational database server",
+    "json_class": "Chef::Role",
+    "default_attributes": {
+    },
+    "override_attributes": {
+    },
+    "chef_type": "role",
+    "run_list": [
+        "recipe[bp-percona::_server]"
+    ],
+    "env_run_lists": {
+    }
+}
