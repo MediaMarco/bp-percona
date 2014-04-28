@@ -23,7 +23,7 @@ the dependency to `mysql`.
 If you want to install the server, you need to create a data bag with the
 creditials ('root', 'debian', 'replication') first.
 
-Include `bp-percona::server` if you want to install the full server or `bp-percona::client` if
+Include `bp-percona::_server` if you want to install the full server or `bp-percona::_client` if
 you only need the client libraries and tools.
 
 In the end you should be able to create databases, user etc. using the Opscode
@@ -32,8 +32,8 @@ In the end you should be able to create databases, user etc. using the Opscode
 ## Cookbooks
 
 * `default` - Installs a database server
-* `server` - Installs the Percona database server
-* `client` - Only installs the client utilities
+* `_server` - Installs the Percona database server
+* `_client` - Only installs the client utilities
 * `testdb` - Uses opscode 'database' cookbook to install a test db and user. This can be used as an example.
 
 ## Resources and Providers
