@@ -26,13 +26,9 @@
 
 include_recipe 'database::default'
 
-rootpw = Chef::EncryptedDataBagItem.load(node['bp-percona']['credidentials'][0], \
-                                         node['bp-percona']['credidentials'][1]) \
-                                        [node['bp-percona']['credidentials'][2]]['root']
-
 mysql_connection_info = { :host => 'localhost',
                           :username => 'root',
-                          :password => rootpw }
+                          :password => get_root_password }
 
 db = Chef::EncryptedDataBagItem.load('bp-percona-test', 'db')['test_app_db']
 
