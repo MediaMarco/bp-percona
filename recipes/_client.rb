@@ -8,19 +8,26 @@ include_recipe 'bp-percona::_prerequisites'
 
 case node['bp-percona']['version']
 when '5.5'
-  packages =  %w{percona-server-client-5.5 libmysqlclient18-dev ruby-mysql}
+  package 'percona-server-client-5.5' do
+    action :install
+  end
 when '5.6'
-  packages =  %w{percona-server-client-5.6 libmysqlclient18-dev ruby-mysql}
+  package 'percona-server-client-5.6' do
+    action :install
+  end
 else
   Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
 end
 
-packages.each do |pkg|
-  package pkg do
+if node['lsb']['codename'] == 'wheezy'
+  package 'libmysqlclient18-dev' do
     action :install
+  end
+  package 'libmysqlclient18.1' do
+    action :remove
   end
 end
 
-package 'libmysqlclient18.1' do
-  action :remove
+package 'ruby-mysql' do
+  action :install
 end

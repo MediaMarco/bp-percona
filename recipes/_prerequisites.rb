@@ -43,4 +43,5 @@ execute 'set_on_hold' do
   command 'echo "libmysqlclient18.1 hold" | dpkg --set-selections'
   user 'root'
   action :nothing
+  only_if { node['lsb']['codename'] == 'wheezy' }
 end
