@@ -10,7 +10,7 @@ case node['bp-percona']['version']
 when '5.5'
   packages =  %w{percona-server-client-5.5 libmysqlclient18-dev ruby-mysql}
 when '5.6'
-  packages =  %w{percona-server-client-5.6 libmysqlclient18.1-dev ruby-mysql}
+  packages =  %w{percona-server-client-5.6 libmysqlclient18-dev ruby-mysql}
 else
   Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
 end
