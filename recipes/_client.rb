@@ -23,5 +23,4 @@ end
 
 package 'libmysqlclient18.1' do
   action :remove
-  only_if { node['bp-percona']['version'] == '5.5' }
 end

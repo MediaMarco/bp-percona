@@ -36,4 +36,11 @@ apt_repository 'percona' do
   components   ['main']
   keyserver    'keys.gnupg.net'
   key          '1C4CBDCDCD2EFD2A'
+  notifies :run, 'execute[set_on_hold]', :immediately
+end
+
+execute 'set_on_hold' do
+  command 'echo "libmysqlclient18.1 hold" | dpkg --set-selections'
+  user 'root'
+  action :nothing
 end
