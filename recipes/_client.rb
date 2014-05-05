@@ -20,9 +20,6 @@ else
 end
 
 if node['lsb']['codename'] == 'wheezy'
-  package 'libmysqlclient18-dev' do
-    action :install
-  end
   package 'libmysqlclient18.1' do
     action :remove
   end
