@@ -9,6 +9,6 @@ version          '0.0.7'
 depends          'apt', '>= 2.3.10'
 depends          'mysql-chef_gem', '>= 0.0.2'
 depends          'database', '>= 2.1.8'
-depends          'mysql', '>= 5.2.2'
+depends          'mysql', '>= 5.0.0'
 
 supports         'debian', '>= 7.0'
