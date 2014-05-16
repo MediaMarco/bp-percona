@@ -59,6 +59,7 @@ execute 'cleanup' do
         DROP DATABASE IF EXISTS test;
         UPDATE user SET password=PASSWORD('#{db_cred['debian']}') WHERE user='debian-sys-maint';
         DELETE FROM user WHERE password='';
+        DELETE FROM db WHERE Db LIKE 'test%';
         FLUSH PRIVILEGES;\" | mysql -u root -p#{db_cred['root']} mysql}
   action :nothing
 end

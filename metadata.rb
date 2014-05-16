@@ -4,7 +4,7 @@ maintainer_email 't.winkler@bigpoint.net'
 license          'All rights reserved'
 description      'A relational database server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.0.8'
+version          '0.0.9'
 
 depends          'apt', '>= 2.3.10'
 depends          'mysql-chef_gem', '>= 0.0.2'
