@@ -39,8 +39,8 @@ default['bp-percona']['max-connect-errors'] = 1000000
 default['bp-percona']['datadir'] = '/var/lib/mysql/'
 
 # BINARY LOGGING #
-default['bp-percona']['log-bin'] = '/var/lib/mysql/mysql-bin'
-default['bp-percona']['expire-logs-days'] = 14
+default['bp-percona']['log-bin'] = nil #'/var/lib/mysql/mysql-bin'
+default['bp-percona']['expire-logs-days'] = 2
 default['bp-percona']['sync-binlog'] = 1
 default['bp-percona']['max-binlog-size'] = '100M'
 

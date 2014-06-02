@@ -33,10 +33,12 @@ max-connect-errors = <%= node['bp-percona']['max-connect-errors'] %>
 # DATA STORAGE #
 datadir = <%= node['bp-percona']['datadir'] %>
 # BINARY LOGGING #
+<% unless node['bp-percona']['log-bin'].nil? %>
 log-bin = <%= node['bp-percona']['log-bin'] %>
 expire-logs-days = <%= node['bp-percona']['expire-logs-days'] %>
 sync-binlog = <%= node['bp-percona']['sync-binlog'] %>
 max-binlog-size = <%= node['bp-percona']['max-binlog-size'] %>
+<% end %>
 # CACHES AND LIMITS #
 tmp-table-size = <%= node['bp-percona']['tmp-table-size'] %>
 max-heap-table-size = <%= node['bp-percona']['max-heap-table-size'] %>
