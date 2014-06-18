@@ -26,6 +26,7 @@ default['bp-percona']['collation-server'] = 'utf8_unicode_ci'
 default['bp-percona']['explicit-defaults-for-timestamp'] = 1
 default['bp-percona']['innodb-file-format'] = 'barracuda'
 default['bp-percona']['init-connect'] = 'SET NAMES utf8'
+default['bp-percona']['server-id'] = nil #will be initialized in prerequisites.rb
 
 # MyISAM #
 default['bp-percona']['key-buffer-size'] = '32M'

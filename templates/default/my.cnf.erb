@@ -30,6 +30,7 @@ myisam-recover-options = <%= node['bp-percona']['myisam-recover-options'] %>
 # SAFETY #
 max-allowed-packet = <%= node['bp-percona']['max-allowed-packet'] %>
 max-connect-errors = <%= node['bp-percona']['max-connect-errors'] %>
+server-id = <%= node['bp-percona']['server-id'] %>
 # DATA STORAGE #
 datadir = <%= node['bp-percona']['datadir'] %>
 # BINARY LOGGING #
