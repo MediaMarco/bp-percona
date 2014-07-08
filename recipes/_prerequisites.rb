@@ -30,18 +30,33 @@ template '/etc/mysql/my.cnf' do
   notifies :reload, 'service[mysql]', :delayed
 end
 
-apt_repository 'percona' do
-  uri          'http://repo.percona.com/apt'
-  distribution node['lsb']['codename'] == 'jessie' ? 'wheezy' : node['lsb']['codename']
-  components   ['main']
-  keyserver    'keys.gnupg.net'
-  key          '1C4CBDCDCD2EFD2A'
-  notifies :run, 'execute[set_on_hold]', :immediately
-end
-
-execute 'set_on_hold' do
-  command 'echo "libmysqlclient18.1 hold" | dpkg --set-selections'
-  user 'root'
-  action :nothing
-  only_if { node['lsb']['codename'] == 'wheezy' }
+case node['platform_family']
+when 'debian'
+  include_recipe "apt"
+  apt_repository 'percona' do
+    uri          'http://repo.percona.com/apt'
+    distribution node['lsb']['codename'] == 'jessie' ? 'wheezy' : node['lsb']['codename']
+    components   ['main']
+    keyserver    'keys.gnupg.net'
+    key          '1C4CBDCDCD2EFD2A'
+    notifies :run, 'execute[set_on_hold]', :immediately
+  end
+  
+  execute 'set_on_hold' do
+    command 'echo "libmysqlclient18.1 hold" | dpkg --set-selections'
+    user 'root'
+    action :nothing
+    only_if { node['lsb']['codename'] == 'wheezy' }
+  end
+when 'rhel'
+  include_recipe 'yum'
+  
+  yum_repository 'percona' do
+    description node['bp-percona']['yum']['description']
+    baseurl node['bp-percona']['yum']['baseurl']
+    gpgkey node['bp-percona']['yum']['gpgkey']
+    gpgcheck node['bp-percona']['yum']['gpgcheck']
+    sslverify node['bp-percona']['yum']['sslverify']
+    action :create
+  end
 end

@@ -22,7 +22,7 @@
 # enforced ('test_app_db' in the example).
 #
 # DEBUG: Can be tested with:
-# echo "SELECT 1;" | mysql -u testuser -ptestpw test_app_db
+# mysql -u testuser -ptestpw test_app_db -e "SELECT 1;"
 
 include_recipe 'database::default'
 
@@ -53,3 +53,6 @@ mysql_database_user db['username'] do
   privileges ['select', 'insert', 'update', 'delete']
   action :grant
 end
+
+log "************ Testing (two ones should appear):\n" \
+    "#{`mysql -u testuser -ptestpw test_app_db -e \"SELECT 1;\"`}\n"

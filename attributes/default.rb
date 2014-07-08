@@ -6,11 +6,20 @@ default['bp-percona']['with_xtradb_backup'] = true
 # Encrypted data bag containing 'root', 'debian' and 'replication' passwords
 default['bp-percona']['credidentials'] = nil
 
+# yum
+arch = node["kernel"]["machine"] == "x86_64" ? "x86_64" : "i386"
+pversion = node["platform_version"].to_i
+
+default['bp-percona']['yum']['description'] = 'Percona Packages'
+default['bp-percona']['yum']['baseurl'] = "http://repo.percona.com/centos/#{pversion}/os/#{arch}/"
+default['bp-percona']['yum']['gpgkey'] = 'http://www.percona.com/downloads/RPM-GPG-KEY-percona'
+default['bp-percona']['yum']['gpgcheck'] = true
+default['bp-percona']['yum']['sslverify'] = true
+
 # [mysql]
 
 # CLIENT #
 default['bp-percona']['port'] = 3306
-default['bp-percona']['socket'] = '/var/lib/mysql/mysql.sock'
 default['bp-percona']['default-character-set'] = 'utf8'
 
 # [mysqld]
@@ -19,7 +28,9 @@ default['bp-percona']['default-character-set'] = 'utf8'
 default['bp-percona']['user'] = 'mysql'
 default['bp-percona']['bind-address'] = '127.0.0.1'
 default['bp-percona']['default-storage-engine'] = 'InnoDB'
-default['bp-percona']['socket'] = '/var/run/mysqld/mysqld.sock' # /etc/init.d/mysql relates to this
+# /etc/init.d/mysql relates to this, which is provided by the package
+default['bp-percona']['socket'] = '/var/run/mysqld/mysqld.sock' if platform? 'debian'
+default['bp-percona']['socket'] = '/var/lib/mysql/mysql.sock' if platform_family? 'rhel'
 default['bp-percona']['pid-file'] = '/var/lib/mysql/mysql.pid'
 default['bp-percona']['character-set-server'] = 'utf8'
 default['bp-percona']['collation-server'] = 'utf8_unicode_ci'

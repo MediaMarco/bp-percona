@@ -12,6 +12,7 @@ Tested on:
 
 - Debian Wheezy
 - Debian Jessie
+- CentOS 6.5
 
 ## mysql-chef_gem
 **Do not install `mysql-chef_gem` in your cookbooks.** This
