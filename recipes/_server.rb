@@ -58,6 +58,11 @@ template '/etc/mysql/debian.cnf' do
   only_if { platform? 'debian' }
 end
 
+service 'mysql' do
+  supports :status => true, :start => true, :stop => true, :reload => true, :restart => true
+  action :start
+end
+
 # Init DB
 execute 'set_password' do
   command "mysqladmin -u root password #{db_cred['root']}"
@@ -73,10 +78,4 @@ execute 'cleanup' do
         DELETE FROM db WHERE Db LIKE 'test%';
         FLUSH PRIVILEGES;\" | mysql -u root -p#{db_cred['root']} mysql}
   action :nothing
-end
-# InitBD end
-
-service 'mysql' do
-  supports :status => true, :start => true, :stop => true, :reload => true, :restart => true
-  action :start
 end
