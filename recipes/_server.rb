@@ -6,13 +6,25 @@
 
 include_recipe 'bp-percona::_client'
 
-case node['bp-percona']['version']
-when '5.5'
-  packages =  %w{percona-server-server-5.5}
-when '5.6'
-  packages =  %w{percona-server-server-5.6}
-else
-  Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
+case node['platform_family']
+when 'debian'
+  case node['bp-percona']['version']
+  when '5.5'
+    packages =  %w{percona-server-server-5.5}
+  when '5.6'
+    packages =  %w{percona-server-server-5.6}
+  else
+    Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
+  end
+when 'rhel'
+  case node['bp-percona']['version']
+  when '5.5'
+    packages =  %w{Percona-Server-server-55}
+  when '5.6'
+    packages =  %w{Percona-Server-server-56}
+  else
+    Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
+  end
 end
 
 packages.each do |pkg|
@@ -43,14 +55,13 @@ template '/etc/mysql/debian.cnf' do
   group 'root'
   mode '0600'
   variables('debianpw' => db_cred['debian'])
-  notifies :run, 'execute[set_password]', :immediately
+  only_if { platform? 'debian' }
 end
 
 # Init DB
 execute 'set_password' do
   command "mysqladmin -u root password #{db_cred['root']}"
   notifies :run, 'execute[cleanup]', :immediately
-  action :nothing
   not_if { `mysqladmin ping -u root -p#{db_cred['root']} 2>/dev/null`.include? 'mysqld is alive' }
 end
 
@@ -67,4 +78,5 @@ end
 
 service 'mysql' do
   supports :status => true, :start => true, :stop => true, :reload => true, :restart => true
+  action :start
 end
