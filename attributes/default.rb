@@ -6,8 +6,10 @@ default['bp-percona']['with_xtradb_backup'] = true
 # Encrypted data bag containing 'root', 'debian' and 'replication' passwords
 default['bp-percona']['credidentials'] = nil
 
+default['bp-percona']['my_cnf'] = '/etc/mysql/my.cnf'
+
 # yum
-arch = node["kernel"]["machine"] == "x86_64" ? "x86_64" : "i386"
+arch = node["kernel"]["machine"] == 'x86_64' ? 'x86_64' : 'i386'
 pversion = node["platform_version"].to_i
 
 default['bp-percona']['yum']['description'] = 'Percona Packages'
