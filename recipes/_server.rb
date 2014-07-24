@@ -40,7 +40,7 @@ end
 
 file '/etc/my.cnf' do
   action :delete
-  only_if { File.exists?('/etc/my.cnf') }
+  only_if { node['bp-percona']['my_cnf'] != '/etc/my.cnf' && File.exists?('/etc/my.cnf') }
 end
 
 raise 'node[\'bp-percona\'][\'credidentials\'] is not defined' if node['bp-percona']['credidentials'].nil?
@@ -60,6 +60,7 @@ end
 
 service 'mysql' do
   supports :status => true, :start => true, :stop => true, :reload => true, :restart => true
+  subscribes :reload, "template[#{node['bp-percona']['my_cnf']}]", :delayed
   action :start
 end
 

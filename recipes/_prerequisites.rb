@@ -24,12 +24,11 @@ directory '/etc/mysql/conf.d' do
   recursive true
 end
 
-template '/etc/mysql/my.cnf' do
+template node['bp-percona']['my_cnf'] do
   source 'my.cnf.erb'
   owner 'root'
   group 'root'
   mode '0644'
-  notifies :reload, 'service[mysql]', :delayed
 end
 
 case node['platform_family']
