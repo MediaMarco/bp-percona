@@ -56,6 +56,7 @@ default['bp-percona']['log-bin'] = nil #'/var/lib/mysql/mysql-bin'
 default['bp-percona']['expire-logs-days'] = 2
 default['bp-percona']['sync-binlog'] = 1
 default['bp-percona']['max-binlog-size'] = '100M'
+default['bp-percona']['binlog-format'] = nil
 
 # CACHES AND LIMITS #
 default['bp-percona']['tmp-table-size'] = '32M'
