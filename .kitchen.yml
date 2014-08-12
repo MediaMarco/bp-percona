@@ -6,19 +6,16 @@ provisioner:
   name: chef_zero
 
 platforms:
-- name: wheezy-64
+- name: debian-7.4
   driver_config:
-    box: wheezy64
-    box_url: http://debbuild.bigpoint.net/wheezy64.box
     customize:
       memory: 768
-- name: jessie-64
+- name: debian-8.0
   driver_config:
-    box: jessie64
-    box_url: http://debbuild.bigpoint.net/jessie64.box
+    box_url: https://downloads.sourceforge.net/project/vagrantboxjessie/debian80.box
     customize:
       memory: 768
-- name: centos-64
+- name: centos-65
   driver_config:
     box: centos65-amd64
     box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
