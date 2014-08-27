@@ -24,9 +24,6 @@ innodb-file-format = <%= node['bp-percona']['innodb-file-format'] %>
 <% if ! node['bp-percona']['init-connect'].nil? && node['bp-percona']['init-connect'] != '' %>
 init-connect = '<%= node['bp-percona']['init-connect'] %>'
 <% end %>
-<% unless node['bp-percona']['read-only'].nil? %>
-read_only = <%= node['bp-percona']['read-only'] %>
-<% end %>
 # MyISAM #
 key-buffer-size = <%= node['bp-percona']['key-buffer-size'] %>
 myisam-recover-options = <%= node['bp-percona']['myisam-recover-options'] %>
