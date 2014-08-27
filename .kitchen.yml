@@ -6,7 +6,7 @@ provisioner:
   name: chef_zero
 
 platforms:
-- name: debian-7.4
+- name: debian-7.6
   driver_config:
     customize:
       memory: 768
@@ -15,15 +15,17 @@ platforms:
     box_url: https://downloads.sourceforge.net/project/vagrantboxjessie/debian80.box
     customize:
       memory: 768
-- name: centos-65
+- name: centos-6.5
   driver_config:
-    box: centos65-amd64
-    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.5_chef-provisionerless.box
+    customize:
+      memory: 768
+- name: centos-7.0
+  driver_config:
     customize:
       memory: 768
 
 suites:
-  - name: percona
+  - name: opscode
     run_list:
       - role[percona-server]
       - recipe[bp-percona::testdb]

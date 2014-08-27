@@ -40,6 +40,7 @@ default['bp-percona']['explicit-defaults-for-timestamp'] = 1
 default['bp-percona']['innodb-file-format'] = 'barracuda'
 default['bp-percona']['init-connect'] = 'SET NAMES utf8'
 default['bp-percona']['server-id'] = nil #will be initialized in prerequisites.rb
+default['bp-percona']['read-only'] = nil #ON/OFF
 
 # MyISAM #
 default['bp-percona']['key-buffer-size'] = '32M'

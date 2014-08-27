@@ -20,7 +20,7 @@ when 'debian'
   else
     Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
   end
-  
+
   if node['lsb']['codename'] == 'wheezy'
     package 'libmysqlclient18.1' do
       action :remove
@@ -35,7 +35,7 @@ when 'rhel'
   %w(mysql mysql-devel mysql-libs).each do |pkg|
     package pkg do
       action :remove
-      #not_if "rpm -qa | grep #{file_name}"
+      # not_if "rpm -qa | grep #{file_name}"
     end
   end
   case node['bp-percona']['version']
