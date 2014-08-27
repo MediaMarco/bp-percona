@@ -10,18 +10,18 @@ case node['platform_family']
 when 'debian'
   case node['bp-percona']['version']
   when '5.5'
-    packages =  %w{percona-server-server-5.5}
+    packages =  %w(percona-server-server-5.5)
   when '5.6'
-    packages =  %w{percona-server-server-5.6}
+    packages =  %w(percona-server-server-5.6)
   else
     Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
   end
 when 'rhel'
   case node['bp-percona']['version']
   when '5.5'
-    packages =  %w{Percona-Server-server-55}
+    packages =  %w(Percona-Server-server-55)
   when '5.6'
-    packages =  %w{Percona-Server-server-56}
+    packages =  %w(Percona-Server-server-56)
   else
     Chef::Application.fatal!("Version #{node['percona']['version']} is not supported!", 1)
   end
@@ -40,10 +40,10 @@ end
 
 file '/etc/my.cnf' do
   action :delete
-  only_if { node['bp-percona']['my_cnf'] != '/etc/my.cnf' && File.exists?('/etc/my.cnf') }
+  only_if { node['bp-percona']['my_cnf'] != '/etc/my.cnf' && File.exist?('/etc/my.cnf') }
 end
 
-raise 'node[\'bp-percona\'][\'credidentials\'] is not defined' if node['bp-percona']['credidentials'].nil?
+fail 'node[\'bp-percona\'][\'credidentials\'] is not defined' if node['bp-percona']['credidentials'].nil?
 
 db_cred = Chef::EncryptedDataBagItem.load(node['bp-percona']['credidentials'][0], \
                                           node['bp-percona']['credidentials'][1]) \

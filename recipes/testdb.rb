@@ -50,7 +50,7 @@ mysql_database_user db['username'] do
   password db['password']
   database_name db['db']
   host 'localhost'
-  privileges ['select', 'insert', 'update', 'delete']
+  privileges %w(select insert update delete)
   action :grant
 end
 
