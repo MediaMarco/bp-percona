@@ -13,7 +13,13 @@ arch = node["kernel"]["machine"] == 'x86_64' ? 'x86_64' : 'i386'
 pversion = node["platform_version"].to_i
 
 default['bp-percona']['yum']['description'] = 'Percona Packages'
-default['bp-percona']['yum']['baseurl'] = "http://repo.percona.com/centos/#{pversion}/os/#{arch}/"
+
+unless pversion = "7.0"
+	default['bp-percona']['yum']['baseurl'] = "http://repo.percona.com/centos/#{pversion}/os/#{arch}/"
+  else
+  	default['bp-percona']['yum']['baseurl'] = "http://repo.percona.com/testing/centos/7/os/#{arch}/"
+end
+
 default['bp-percona']['yum']['gpgkey'] = 'http://www.percona.com/downloads/RPM-GPG-KEY-percona'
 default['bp-percona']['yum']['gpgcheck'] = true
 default['bp-percona']['yum']['sslverify'] = true
@@ -39,6 +45,7 @@ default['bp-percona']['collation-server'] = 'utf8_unicode_ci'
 default['bp-percona']['explicit-defaults-for-timestamp'] = 1
 default['bp-percona']['innodb-file-format'] = 'barracuda'
 default['bp-percona']['init-connect'] = 'SET NAMES utf8'
+default['bp-percona']['read-only'] = nil #ON/OFF
 
 # MyISAM #
 default['bp-percona']['key-buffer-size'] = '32M'
