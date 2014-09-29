@@ -80,3 +80,14 @@ ssl-ca=/etc/mysql/cacert.pem
 ssl-cert=/etc/mysql/server-cert.pem
 ssl-key=/etc/mysql/server-key.pem
 <% end %>
+# SQL MODE #
+<% unless node['bp-percona']['sql_mode'].nil? %>
+sql_mode = <%= node['bp-percona']['sql_mode'] %>
+<% end %>
+# FULLTEXT #
+<% unless node['bp-percona']['ft_stopword_file'].nil? %>
+ft_stopword_file = <%= node['bp-percona']['ft_stopword_file'] %>
+<% end %>
+<% unless node['bp-percona']['ft_min_word_len'].nil? %>
+ft_min_word_len = <%= node['bp-percona']['ft_min_word_len'] %>
+<% end %>
