@@ -8,8 +8,8 @@ version          '0.0.19'
 
 depends          'apt', '>= 2.3.10'
 depends          'yum', '>= 3.2.2'
-depends          'mysql-chef_gem', '>= 0.0.2'
-depends          'database', '>= 2.3'
+depends          'mysql-chef_gem', '~> 0.0'
+depends          'database', '~> 2.3'
 depends          'mysql', '< 5.4'
 
 supports         'debian', '>= 7.0'
