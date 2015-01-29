@@ -4,7 +4,7 @@ maintainer_email 't.winkler@bigpoint.net'
 license          'All rights reserved'
 description      'A relational database server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.0.20'
+version          '0.0.21'
 
 depends          'apt', '>= 2.3.10'
 depends          'yum', '>= 3.2.2'

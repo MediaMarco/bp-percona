@@ -60,6 +60,10 @@ default['bp-percona']['sync-binlog'] = 1
 default['bp-percona']['max-binlog-size'] = '100M'
 default['bp-percona']['binlog-format'] = nil
 
+# REPLICATION #
+default['bp-percona']['replicate-do-db'] = nil # 'db1','db2'
+default['bp-percona']['replicate-ignore-db'] = nil # 'db1','db2'
+
 # CACHES AND LIMITS #
 default['bp-percona']['tmp-table-size'] = '32M'
 default['bp-percona']['max-heap-table-size'] = '32M'

@@ -46,6 +46,17 @@ max-binlog-size = <%= node['bp-percona']['max-binlog-size'] %>
 binlog_format = <%= node['bp-percona']['binlog-format'] %>
 <% end %>
 <% end %>
+# REPLICATION #
+<% unless node['bp-percona']['replicate-do-db'].nil? %>
+<% @node['bp-percona']['replicate-do-db'].each do |db| %>
+replicate-do-db = <%= db %>
+<% end %>
+<% end %>
+<% unless node['bp-percona']['replicate-ignore-db'].nil? %>
+<% @node['bp-percona']['replicate-ignore-db'].each do |db| %>
+replicate-ignore-db = <%= db %>
+<% end %>
+<% end %>
 # CACHES AND LIMITS #
 tmp-table-size = <%= node['bp-percona']['tmp-table-size'] %>
 max-heap-table-size = <%= node['bp-percona']['max-heap-table-size'] %>
