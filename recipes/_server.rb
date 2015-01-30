@@ -62,6 +62,7 @@ service 'mysql' do
   supports :status => true, :start => true, :stop => true, :reload => true, :restart => true
   subscribes :reload, "template[#{node['bp-percona']['my_cnf']}]", :delayed
   action :start
+  not_if { File.exist?(node['bp-percona']['no_restart_file']) }
 end
 
 # Init DB

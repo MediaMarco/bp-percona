@@ -8,6 +8,9 @@ default['bp-percona']['credidentials'] = nil
 
 default['bp-percona']['my_cnf'] = '/etc/mysql/my.cnf'
 
+# chef won't restart mysql service if this file exits 
+default['bp-percona']['no_restart_file'] = '/etc/mysql/chef-percona-norestart'
+
 # yum
 arch = node["kernel"]["machine"] == 'x86_64' ? 'x86_64' : 'i386'
 pversion = node["platform_version"].to_i
