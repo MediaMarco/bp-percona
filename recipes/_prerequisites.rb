@@ -25,7 +25,7 @@ directory '/etc/mysql/conf.d' do
 end
 
 [node['bp-percona']['log-error'], node['bp-percona']['slow-query-log-file']].each do |dir|
-  directory File.dirname[dir] do
+  directory File.dirname(dir) do
     owner node['bp-percona']['user']
     group 'root'
     mode '0755'
