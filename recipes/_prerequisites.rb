@@ -11,7 +11,7 @@ node.set['mysql']['server_root_password'] = '***'
 node.set['mysql']['server_repl_password'] = '***'
 node.set['mysql']['server_debian_password'] = '***'
 
-node.set_unless['bp-percona']['server-id'] = rand(65536-10000) + 10000
+node.set_unless['bp-percona']['server-id'] = rand(65_536 - 10_000) + 10_000
 
 directory '/etc/mysql' do
   owner 'root'
@@ -22,6 +22,14 @@ end
 directory '/etc/mysql/conf.d' do
   action :delete
   recursive true
+end
+
+[node['bp-percona']['log-error'], node['bp-percona']['slow-query-log-file']].each do |dir|
+  directory File.dirname(dir) do
+    owner node['bp-percona']['user']
+    group 'root'
+    mode '0755'
+  end
 end
 
 template node['bp-percona']['my_cnf'] do
