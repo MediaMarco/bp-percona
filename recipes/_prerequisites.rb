@@ -35,11 +35,11 @@ case node['platform_family']
 when 'debian'
   include_recipe 'apt'
   apt_repository 'percona' do
-    uri 'http://repo.percona.com/apt'
+    uri node['bp-percona']['apt']['mirror']
     distribution node['lsb']['codename'] == 'jessie' ? 'wheezy' : node['lsb']['codename']
-    components ['main']
-    keyserver 'keys.gnupg.net'
-    key '1C4CBDCDCD2EFD2A'
+    components node['bp-percona']['apt']['components']
+    keyserver node['bp-percona']['apt']['keyserver']
+    key node['bp-percona']['apt']['key']
     notifies :run, 'execute[set_on_hold]', :immediately
   end
 

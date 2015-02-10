@@ -21,6 +21,12 @@ default['bp-percona']['yum']['gpgkey'] = 'http://www.percona.com/downloads/RPM-G
 default['bp-percona']['yum']['gpgcheck'] = true
 default['bp-percona']['yum']['sslverify'] = true
 
+# apt
+default['bp-percona']['apt']['mirror'] = 'http://repo.percona.com/apt'
+default['bp-percona']['apt']['components'] = ['main']
+default['bp-percona']['apt']['keyserver'] = 'keys.gnupg.net'
+default['bp-percona']['apt']['key'] = '1C4CBDCDCD2EFD2A'
+
 # [mysql]
 
 # CLIENT #
