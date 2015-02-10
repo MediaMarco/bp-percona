@@ -24,6 +24,12 @@ directory '/etc/mysql/conf.d' do
   recursive true
 end
 
+directory '/var/log/mysql' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+end
+
 template node['bp-percona']['my_cnf'] do
   source 'my.cnf.erb'
   owner 'root'
