@@ -8,7 +8,7 @@ default['bp-percona']['credidentials'] = nil
 
 default['bp-percona']['my_cnf'] = '/etc/mysql/my.cnf'
 
-# chef won't restart mysql service if this file exits 
+# chef won't restart mysql service if this file exits
 default['bp-percona']['no_restart_file'] = '/etc/mysql/chef-percona-norestart'
 
 # yum
@@ -89,10 +89,10 @@ default['bp-percona']['innodb-io-capacity'] = 500
 default['bp-percona']['skip-name-resolve'] = true
 
 # LOGGING #
-default['bp-percona']['log-error'] = '/var/lib/mysql/mysql-error.log'
+default['bp-percona']['log-error'] = '/var/log/mysql/mysql-error.log'
 default['bp-percona']['log-queries-not-using-indexes'] = 'off'
 default['bp-percona']['slow-query-log'] = 1
-default['bp-percona']['slow-query-log-file'] = '/var/lib/mysql/mysql-slow.log'
+default['bp-percona']['slow-query-log-file'] = '/var/log/mysql/mysql-slow.log'
 # SSL
 default['bp-persona']['ssl'] = false
 default['bp-percona']['ssl-ca'] = '/etc/mysql/cacert.pem'
@@ -105,4 +105,3 @@ total_memory = node['memory']['total'][0, node['memory']['total'].length - 2].to
 default['bp-percona']['innodb-buffer-pool-size'] = total_memory > 1048576 ? "#{total_memory / 1228}M" : nil
 
 default['bp-percona']['innodb-log-file-size'] = total_memory < 41943040 ? '256M' : '512M'
-
