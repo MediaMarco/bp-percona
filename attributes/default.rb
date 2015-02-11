@@ -68,6 +68,7 @@ default['bp-percona']['expire-logs-days'] = 2
 default['bp-percona']['sync-binlog'] = 1
 default['bp-percona']['max-binlog-size'] = '100M'
 default['bp-percona']['binlog-format'] = nil
+default['bp-percona']['log-slave-updates'] = nil
 
 # REPLICATION #
 default['bp-percona']['replicate-do-db'] = nil # 'db1','db2'
@@ -99,6 +100,21 @@ default['bp-percona']['log-error'] = '/var/log/mysql/mysql-error.log'
 default['bp-percona']['log-queries-not-using-indexes'] = 'off'
 default['bp-percona']['slow-query-log'] = 1
 default['bp-percona']['slow-query-log-file'] = '/var/log/mysql/mysql-slow.log'
+
+# AUDIT LOGGING #
+default['bp-percona']['audit-log-strategy'] = nil
+default['bp-percona']['audit-log-file'] = nil
+default['bp-percona']['audit-log-flush'] = nil
+default['bp-percona']['audit-log-buffer-size'] = nil
+default['bp-percona']['audit-log-format'] = nil
+default['bp-percona']['audit-log-policy'] = nil
+default['bp-percona']['audit-log-rotate-on-size'] = nil
+default['bp-percona']['audit-log-rotations'] = nil
+default['bp-percona']['audit-log-handler'] = nil
+default['bp-percona']['audit-log-syslog-ident'] = nil
+default['bp-percona']['audit-log-syslog-facility'] = nil
+default['bp-percona']['audit-log-syslog-priority'] = nil
+
 # SSL
 default['bp-persona']['ssl'] = false
 default['bp-percona']['ssl-ca'] = '/etc/mysql/cacert.pem'
