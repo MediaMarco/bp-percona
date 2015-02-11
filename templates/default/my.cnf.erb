@@ -45,6 +45,9 @@ max-binlog-size = <%= node['bp-percona']['max-binlog-size'] %>
 <% unless node['bp-percona']['binlog-format'].nil? %>
 binlog_format = <%= node['bp-percona']['binlog-format'] %>
 <% end %>
+<% unless node['bp-percona']['log-slave-updates'].nil? %>
+log-slave-updates = <%= node['bp-percona']['log-slave-updates'] %>
+<% end %>
 <% end %>
 # REPLICATION #
 <% unless node['bp-percona']['replicate-do-db'].nil? %>
@@ -86,6 +89,44 @@ log-error = <%= node['bp-percona']['log-error'] %>
 log-queries-not-using-indexes = <%= node['bp-percona']['log-queries-not-using-indexes'] %>
 slow-query-log = <%= node['bp-percona']['slow-query-log'] %>
 slow-query-log-file = <%= node['bp-percona']['slow-query-log-file'] %>
+# AUDIT LOGGING #
+<% unless node['bp-percona']['audit-log-strategy'].nil? %>
+audit_log_strategy = <%= node['bp-percona']['audit-log-strategy'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-file'].nil? %>
+audit_log_file = <%= node['bp-percona']['audit-log-file'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-flush'].nil? %>
+audit_log_flush = <%= node['bp-percona']['audit-log-flush'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-buffer-size'].nil? %>
+audit_log_buffer_size = <%= node['bp-percona']['audit-log-buffer-size'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-format'].nil? %>
+audit_log_format = <%= node['bp-percona']['audit-log-format'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-policy'].nil? %>
+audit_log_policy = <%= node['bp-percona']['audit-log-policy'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-rotate-on-size'].nil? %>
+audit_log_rotate_on_size = <%= node['bp-percona']['audit-log-rotate-on-size'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-rotations'].nil? %>
+audit_log_rotations = <%= node['bp-percona']['audit-log-rotations'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-handler'].nil? %>
+audit_log_handler = <%= node['bp-percona']['audit-log-handler'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-syslog-ident'].nil? %>
+audit_log_syslog_ident = <%= node['bp-percona']['audit-log-syslog-ident'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-syslog-facility'].nil? %>
+audit_log_syslog_facility = <%= node['bp-percona']['audit-log-syslog-facility'] %>
+<% end %>
+<% unless node['bp-percona']['audit-log-syslog-priority'].nil? %>
+audit_log_syslog_priority = <%= node['bp-percona']['audit-log-syslog-priority'] %>
+<% end %>
+# SSL #
 <% if node['bp-percona']['ssl'] %>
 ssl-ca=/etc/mysql/cacert.pem
 ssl-cert=/etc/mysql/server-cert.pem
