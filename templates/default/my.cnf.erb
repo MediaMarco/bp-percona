@@ -91,3 +91,6 @@ ft_stopword_file = <%= node['bp-percona']['ft_stopword_file'] %>
 <% unless node['bp-percona']['ft_min_word_len'].nil? %>
 ft_min_word_len = <%= node['bp-percona']['ft_min_word_len'] %>
 <% end %>
+<% unless node['bp-percona']['ft_boolean_syntax'].nil? %>
+ft_boolean_syntax = <%= node['bp-percona']['ft_boolean_syntax'] %>
+<% end %>
